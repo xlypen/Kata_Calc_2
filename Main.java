@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -5,8 +6,11 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Введите выражение через пробел. Строки вводятся в двойных кавычках :");
-
+        for (String s : Arrays.asList(
+                "Максимальная длинна строки (каждого операнда) 10 символов!",
+                "Введите выражение через пробел. Строки вводятся в двойных кавычках :")) {
+            System.out.println(s);
+        }
         try {
             StringBuilder[] sb = split(scanner.nextLine());
             String result = resultat(sb, calc);
@@ -30,9 +34,9 @@ public class Main {
         };
     }
 
-    public static StringBuilder[] split(String splinted) {
+    public static StringBuilder[] split(String splinted)  {
         String[] sb = new String[2];
-        StringBuilder[] newSB = new StringBuilder [3];
+        StringBuilder[] newSB = new StringBuilder[3];
         String operator = "";
         if (splinted.contains("+")) {
             sb = splinted.split(" [+] ");
@@ -50,6 +54,11 @@ public class Main {
         newSB[0] = new StringBuilder(sb[0]);
         newSB[1] = new StringBuilder(sb[1]);
         newSB[2] = new StringBuilder(operator);
-        return newSB;
+        if (sb[0].length() <= 12 && sb[1].length() <= 12) {
+
+            return newSB;
+        } else {
+            throw new NullPointerException("Вы ввели неверное значение!");
+        }
     }
 }

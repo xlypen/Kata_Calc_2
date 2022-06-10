@@ -20,11 +20,16 @@ class Calc extends Calculate {
         if (a.indexOf("\"") != -1 && a.indexOf("\"", a.length() - 1) != -1 && b.indexOf("\"") != -1 && b.indexOf("\"", b.length() - 1) != -1) {
             a.deleteCharAt(0).deleteCharAt(a.length() - 1);
             b.deleteCharAt(0).deleteCharAt(b.length() - 1);
+            switch (a.indexOf(String.valueOf(b))){
+                case 0:
             a.delete(a.indexOf(b.toString()), a.indexOf(b.toString()) + b.length());
             return result.append(a).append("\"").toString();
+            case -1:
+                return result.append(a).append("\"").toString();}
         } else {
             throw new NullPointerException("Вы ввели неправильное выражение");
         }
+        return null;
     }
 
     public String mul(StringBuilder a, int b) {
