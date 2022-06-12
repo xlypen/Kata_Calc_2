@@ -22,14 +22,15 @@ class Calc extends Calculate {
             b.deleteCharAt(0).deleteCharAt(b.length() - 1);
             switch (a.indexOf(String.valueOf(b))){
                 case 0:
-            a.delete(a.indexOf(b.toString()), a.indexOf(b.toString()) + b.length());
-            return result.append(a).append("\"").toString();
-            case -1:
-                return result.append(a).append("\"").toString();}
+                    a.delete(a.indexOf(b.toString()), a.indexOf(b.toString()) + b.length());
+                    return result.append(a).append("\"").toString();
+                case -1:
+                    return result.append(a).append("\"").toString();}
         } else {
             throw new NullPointerException("Вы ввели неправильное выражение");
         }
-        return null;
+        a.delete(a.indexOf(b.toString()), a.indexOf(b.toString()) + b.length());
+        return result.append(a).append("\"").toString();
     }
 
     public String mul(StringBuilder a, int b) {
